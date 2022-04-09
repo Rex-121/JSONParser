@@ -11,6 +11,8 @@
 		A260582C2801C88800D5A774 /* JSONParser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26058212801C88800D5A774 /* JSONParser.framework */; };
 		A26058312801C88800D5A774 /* JSONParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26058302801C88800D5A774 /* JSONParserTests.swift */; };
 		A26058322801C88800D5A774 /* JSONParser.h in Headers */ = {isa = PBXBuildFile; fileRef = A26058242801C88800D5A774 /* JSONParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A260583C2801C94000D5A774 /* JSONValidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A260583B2801C94000D5A774 /* JSONValidate.swift */; };
+		A260583E2801D22400D5A774 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A260583D2801D22400D5A774 /* JSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		A26058252801C88800D5A774 /* JSONParser.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = JSONParser.docc; sourceTree = "<group>"; };
 		A260582B2801C88800D5A774 /* JSONParserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONParserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A26058302801C88800D5A774 /* JSONParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParserTests.swift; sourceTree = "<group>"; };
+		A260583B2801C94000D5A774 /* JSONValidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONValidate.swift; sourceTree = "<group>"; };
+		A260583D2801D22400D5A774 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 			children = (
 				A26058242801C88800D5A774 /* JSONParser.h */,
 				A26058252801C88800D5A774 /* JSONParser.docc */,
+				A260583B2801C94000D5A774 /* JSONValidate.swift */,
+				A260583D2801D22400D5A774 /* JSON.swift */,
 			);
 			path = JSONParser;
 			sourceTree = "<group>";
@@ -194,7 +200,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A260583E2801D22400D5A774 /* JSON.swift in Sources */,
 				A26058262801C88800D5A774 /* JSONParser.docc in Sources */,
+				A260583C2801C94000D5A774 /* JSONValidate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,6 +404,7 @@
 		A26058392801C88800D5A774 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S7YAAK4XAE;
@@ -412,6 +421,7 @@
 		A260583A2801C88800D5A774 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S7YAAK4XAE;
