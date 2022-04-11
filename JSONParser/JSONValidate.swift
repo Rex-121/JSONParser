@@ -7,8 +7,8 @@
 
 import Foundation
 
-
-extension String {
+/// ahglasjd
+public extension String {
     
     
     private var JSONReadingOptions: JSONSerialization.ReadingOptions {
@@ -19,6 +19,7 @@ extension String {
         }
     }
     
+    /// ljasdfs
     var isValidateJSON: Result<JSON, Error> {
         
         if (isEmpty) { return .success(JSON("")) }

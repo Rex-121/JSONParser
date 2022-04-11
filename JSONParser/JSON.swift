@@ -9,9 +9,9 @@ import Foundation
 import CloudKit
 import SwiftUI
 
-struct JSON {
+public struct JSON {
     
-    enum `Type`: String {
+    public enum `Type`: String {
         case dictionary
         case array
         case single
@@ -81,7 +81,7 @@ extension JSON: CustomDebugStringConvertible {
         key.isEmpty ? "" : "\(key): "
     }
     
-    var debugDescription: String {
+   public var debugDescription: String {
         
         switch type {
         case .single:
