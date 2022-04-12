@@ -7,19 +7,19 @@
 
 import Foundation
 
-/// ahglasjd
+///
 public extension String {
     
     
     private var JSONReadingOptions: JSONSerialization.ReadingOptions {
-        if #available(iOS 15.0, *) {
+        if #available(iOS 15.0, macOS 12.0, *) {
             return first == "[" ? [.json5Allowed] : [.topLevelDictionaryAssumed, .json5Allowed]
         } else {
             return [.fragmentsAllowed]
         }
     }
     
-    /// ljasdfs
+    ///
     var isValidateJSON: Result<JSON, Error> {
         
         if (isEmpty) { return .success(JSON("")) }

@@ -5,10 +5,6 @@
 //  Created by Tyrant on 2022/3/28.
 //
 
-import Foundation
-import CloudKit
-import SwiftUI
-
 public struct JSON {
     
     public enum `Type`: String {
@@ -71,10 +67,8 @@ extension JSON: CustomDebugStringConvertible {
         }
     }
     
-    public func adf() {
-        contains.forEach { v in
-            print(v.debugDescription)
-        }
+    public func inline() {
+        contains.forEach { print($0.debugDescription) }
     }
     
     var keyDescription: String {
