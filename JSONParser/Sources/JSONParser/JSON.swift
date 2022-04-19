@@ -34,7 +34,6 @@ public struct JSON {
         case .dictionary:
             
             let a = data as? Dictionary<String, Any> ?? Dictionary<String, Any>()
-            
             contains = a.map { JSON(index: index + 1, key: $0, $1) }
             
         case .array:
@@ -68,7 +67,8 @@ extension JSON: CustomDebugStringConvertible {
     }
     
     public func inline() {
-        contains.forEach { print($0.debugDescription) }
+        return
+//        contains.forEach { print($0.debugDescription) }
     }
     
     var keyDescription: String {

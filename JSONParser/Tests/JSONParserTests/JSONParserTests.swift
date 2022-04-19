@@ -5,13 +5,14 @@ final class JSONParserTests: XCTestCase {
     let dic2 = """
        {
             "out": {
+                      "outarray": [
+                      3, 2
+                   ],
                "outvalue": 1,
                "outdic": {
                 
-               },
-               "outarray": [
-               3, 2
-            ]
+               }
+               
             }
           }
        """
@@ -50,6 +51,8 @@ final class JSONParserTests: XCTestCase {
    //        XCTAssertTrue(value.type == .dictionary)
            value.inline()
            
+           print("------")
+           
            let value1 = try dic2.isValidateJSON.get()
            value1.inline()
        }
@@ -57,7 +60,7 @@ final class JSONParserTests: XCTestCase {
        func testArrayValidate() throws {
                    
            let value = try array.isValidateJSON.get()
-           value.inline()
+//           value.inline()
            XCTAssertTrue(value.type == .array)
            
        }
