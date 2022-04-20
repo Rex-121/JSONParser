@@ -61,7 +61,6 @@ final class JSONParserTests: XCTestCase {
                    
            let value = try array.isValidateJSON.get()
 //           value.inline()
-           XCTAssertTrue(value.type == .array)
            
        }
        
@@ -69,7 +68,6 @@ final class JSONParserTests: XCTestCase {
        func testEmptyString() throws {
                    
            let value = try "".isValidateJSON.get()
-           XCTAssertTrue(value.type == .single)
            
        }
        

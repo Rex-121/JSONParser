@@ -67,18 +67,15 @@ public struct Decoding: Decodable, SingleValueProtocol {
     public enum `Type` {
         
         /// 数组
-        case array(SingleValueProtocol)
+        case array([Decoding])
         
         /// 字典
-        case dictionary(SingleValueProtocol)
+        case dictionary([String: Decoding])
         
         /// 字面量
         case signle(SingleValueProtocol)
         
     }
-    
-   
-    
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
@@ -110,12 +107,7 @@ extension Decoding.`Type`: CustomDebugStringConvertible {
         case .signle(let v): return v.debugDescription
         }
     }
-    
-    
-    func indexed(v: Int) -> JSONIndexable {
-        
-        JSONIndexable(index: 0, value: self)
-    }
+
 }
 
 extension Dictionary: SingleValueProtocol where Value: SingleValueProtocol {

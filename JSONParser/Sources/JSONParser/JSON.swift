@@ -5,12 +5,41 @@
 //  Created by Tyrant on 2022/3/28.
 //
 
+import Foundation
+
+
 public struct JSON {
     
-    public enum `Type`: String {
+    
+    
+    public enum `Type` {
+        
         case dictionary
+        
         case array
-        case single
+        
+        case single(TrueValue)
+        
+        
+        public enum TrueValue: CustomStringConvertible {
+            case string(String)
+            case int(Int)
+            case double(Double)
+            case `nil`
+            
+            public var description: String {
+                switch self {
+                case .string(let string):
+                    return string
+                case .int(let int):
+                    return int.description
+                case .double(let double):
+                    return double.description
+                case .nil:
+                    return "null"
+                }
+            }
+        }
     }
     
     var type: JSON.`Type` {
@@ -45,11 +74,6 @@ public struct JSON {
         }
         
     }
-    
-    //    func allLineViews() -> [JSONKeyValue] {
-    //        let dic = data as? Dictionary<String, Any> ?? [:]
-    //        return dic.ToJSONKeyValue
-    //    }
 }
 
 
@@ -62,24 +86,33 @@ extension JSON: CustomDebugStringConvertible {
         case is Dictionary<String, Any>:
             return .dictionary
         default:
-            return .single
+            switch data {
+            case is String:
+                return .single(.string(data as! String))
+            case is Double:
+                return .single(.double(data as! Double))
+            case is Int:
+                return .single(.int(data as! Int))
+            default:
+                return .single(.nil)
+            }
         }
     }
     
     public func inline() {
-        return
-//        contains.forEach { print($0.debugDescription) }
+        //        return
+        contains.forEach { print($0.debugDescription) }
     }
     
     var keyDescription: String {
         key.isEmpty ? "" : "\(key): "
     }
     
-   public var debugDescription: String {
+    public var debugDescription: String {
         
         switch type {
-        case .single:
-            return "\(index.TabString)\(keyDescription)\(data)"
+        case .single(let value):
+            return "\(index.TabString)\(keyDescription)\(value)"
         case .dictionary:
             return """
 \(index.TabString)\(keyDescription)
