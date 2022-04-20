@@ -11,23 +11,35 @@ import Foundation
 public struct JSON {
     
     
-    
+    /// `JSON`类型
     public enum `Type` {
         
+        /// 字典
         case dictionary
         
+        /// 数组
         case array
         
-        case single(TrueValue)
+        /// 字面量
+        case literal(LiteralValue)
         
         
-        public enum TrueValue: CustomStringConvertible {
+        /// 字面量类型
+        public enum LiteralValue: CustomDebugStringConvertible {
+            
+            ///  字符串
             case string(String)
+            
+            /// 整形
             case int(Int)
+            
+            /// 浮点数
             case double(Double)
+            
+            /// 空/无法解析的类型
             case `nil`
             
-            public var description: String {
+            public var debugDescription: String {
                 switch self {
                 case .string(let string):
                     return string
@@ -69,7 +81,7 @@ public struct JSON {
             let a = data as? Array<Any> ?? []
             contains = a.map { JSON(index: index + 1, $0) }
             
-        case .single:
+        case .literal:
             contains = []
         }
         
@@ -79,6 +91,7 @@ public struct JSON {
 
 extension JSON: CustomDebugStringConvertible {
     
+    /// 分析`JSON Data`类型
     static func FindType(data: Any) -> JSON.`Type` {
         switch data {
         case is Array<Any>:
@@ -86,16 +99,21 @@ extension JSON: CustomDebugStringConvertible {
         case is Dictionary<String, Any>:
             return .dictionary
         default:
-            switch data {
-            case is String:
-                return .single(.string(data as! String))
-            case is Double:
-                return .single(.double(data as! Double))
-            case is Int:
-                return .single(.int(data as! Int))
-            default:
-                return .single(.nil)
-            }
+            return .literal(ParseLiteralValue(by: data))
+        }
+    }
+    
+    /// 拆解字面量
+    static func ParseLiteralValue(by data: Any) -> JSON.`Type`.LiteralValue {
+        switch data {
+        case is String:
+            return .string(data as! String)
+        case is Int:
+            return .int(data as! Int)
+        case is Double:
+            return .double(data as! Double)
+        default:
+            return .nil
         }
     }
     
@@ -111,8 +129,8 @@ extension JSON: CustomDebugStringConvertible {
     public var debugDescription: String {
         
         switch type {
-        case .single(let value):
-            return "\(index.TabString)\(keyDescription)\(value)"
+        case .literal(let value):
+            return "\(index.TabString)\(keyDescription)\(value.debugDescription)"
         case .dictionary:
             return """
 \(index.TabString)\(keyDescription)
